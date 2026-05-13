@@ -5,7 +5,7 @@
 
 
 % El títulos de la memoria, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \ttitle
-\titulo{Título del proyecto} 
+\titulo{Módulo de simulación óptica NIRS para sistema SEDSIM}
 
 % Nombre del posgrado, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \degreename
 \posgrado{Carrera de Especialización en Sistemas Embebidos} 
@@ -16,21 +16,23 @@
 
 % Tu nombre, se puede usar el cualquier lugar del documento con el comando \authorname
 % IMPORTANTE: no omitir titulaciones ni tildación en los nombres, también se recomienda escribir los nombres completos (tal cual los tienen en su documento)
-\autor{Título y Nombre del autor}
+\autor{Ing. Juan Sebastián Pinto Fuentes}
 
 % El nombre del director y co-director, se puede usar el cualquier lugar del documento con el comando \supname y \cosupname y \pertesupname y \pertecosupname
-\director{Título y Nombre del director}
-\pertenenciaDirector{pertenencia} 
+\director{Ing. Juan Manuel Fernández}
+\pertenenciaDirector{Smarttiva Inc} 
 \codirector{} % para que aparezca en la portada se debe descomentar la opción codirector en los parámetros de documentclass
 \pertenenciaCoDirector{FIUBA}
 
+
+
 % Nombre del cliente, quien va a aprobar los resultados del proyecto, se puede usar con el comando \clientename y \empclientename
-\cliente{Nombre del cliente}
-\empresaCliente{Empresa del cliente}
+\cliente{Smarttiva}
+\empresaCliente{Smarttiva Inc}
  
-\fechaINICIO{30 de abril de 2023}		%Fecha de inicio de la cursada de GdP \fechaInicioName
-\fechaFINALPlan{18 de junio de 2023} 	%Fecha de final de cursada de GdP
-\fechaFINALTrabajo{15 de mayo de 2024}	%Fecha de defensa pública del trabajo final
+\fechaINICIO{28 de abril de 2026}		%Fecha de inicio de la cursada de GdP \fechaInicioName
+\fechaFINALPlan{23 de junio de 2026} 	%Fecha de final de cursada de GdP
+\fechaFINALTrabajo{15 de noviembre de 2026}	%Fecha de defensa pública del trabajo final
 
 
 \begin{document}
@@ -59,7 +61,7 @@
 \rowcolor[HTML]{C0C0C0} 
 Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios realizados} & Fecha      \\ \hline
 0      & Creación del documento                                 &\fechaInicioName \\ \hline
-%1      & Se completa hasta el punto 5 inclusive                & {día} de {mes} de 202X \\ \hline
+1      & Se completa hasta el punto 5 inclusive                & {10} de {mayo} de 2026 \\ \hline
 %2      & Se completa hasta el punto 9 inclusive
 %		  Se puede agregar algo más \newline
 %		  En distintas líneas \newline
@@ -85,7 +87,7 @@ Buenos Aires, \fechaInicioName
 
 \vspace{2cm}
 
-Por medio de la presente se acuerda con el \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'' y consistirá en \textcolor{red}{la implementación de un prototipo de un sistema de control de temperatura de una caldera industrial}. El trabajo tendrá un presupuesto preliminar estimado de \textcolor{red}{600} horas y un costo estimado de \textcolor{red}{\$ XXX}, con fecha de inicio el \fechaInicioName\hspace{1px} y fecha de presentación pública el \fechaFinalName.
+Por medio de la presente se acuerda con el \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'' y consistirá en \textcolor{black}{un módulo de simulación óptica por espectroscopia de infrarrojo cercano (NIRS), por sus siglas en inglés, integrado al sistema SEDSIM, capaz de reproducir condiciones controladas de oxigenación tisular mediante la modulación de fuentes LED en distintas longitudes de onda}. El trabajo tendrá un presupuesto preliminar estimado de \textcolor{black}{600} horas y un costo estimado de \textcolor{black}{\$ 1000 USD}, con fecha de inicio el \fechaInicioName\hspace{1px} y fecha de presentación pública el \fechaFinalName.
 
 Se adjunta a esta acta la planificación inicial.
 
@@ -106,144 +108,147 @@ Se adjunta a esta acta la planificación inicial.
 \section{1. Descripción técnica-conceptual del proyecto a realizar}
 \label{sec:descripcion}
 
-\begin{consigna}{red} % ELIMINAR \begin{consigna}{red} y \end{consigna}{red} en las secciones que vayan completando para cada entrega parcial.
-El objetivo es que el lector, en una o dos páginas, exponga de qué se trata el proyecto y cuáles son sus desafíos, cuál es la motivación para realizarlo y su importancia.
+%\begin{consigna}{red} % ELIMINAR \begin{consigna}{red} y \end{consigna}{red} en las secciones que vayan completando para cada entrega parcial.
+El presente proyecto se desarrolla en conjunto con \empclientename, empresa orientada al desarrollo de tecnologías biomédicas, con un enfoque principal en simulación y monitoreo en anestesia. Actualmente, la compañía dispone del sistema SEDSIM, una plataforma capaz de generar señales de electroencefalografía (EEG) utilizadas en entornos académicos y de validación de equipos biomédicos. Sin embargo, existe la necesidad de ampliar las capacidades del simulador incorporando nuevas variables fisiológicas asociadas a la oxigenación tisular, particularmente aquellas obtenidas mediante espectroscopía en el infrarrojo cercano (Near Infrared Spectroscopy, NIRS).
 
-Se debe introducir el contexto del proyecto, el estado del arte en la temática, describir la propuesta de valor, cuál es el problema que atiende y cuál es la solución que se propone. Se debe dar una descripción funcional de la solución que incluya un diagrama en bloques.
+Dicha técnica se utiliza comúnmente en monitoreo cerebral y oximetría porque permite estimar de forma no invasiva ciertos parámetros como la saturación regional de oxígeno (rSO2). El funcionamiento de esta  radica en la diferencia de absorción existente entre la hemoglobina oxigenada (HbO2) y desoxigenada (Hb) ante distintas longitudes de onda en el espectro del infrarrojo cercano. Actualmente existe gran diversidad de dispositivos comerciales que permiten el monitoreo NIRS, sin embargo, en cuanto a simulación se trata, las opciones suelen ser muy escasas, costosas o simplemente enfocadas a simulaciones digitales que no permiten reproducir o estimar el comportamiento óptico real asociado a este fenómeno.
 
-Puede ser útil incluir en esta sección la respuesta a alguna de estas preguntas:
+En este contexto, se propone el desarrollo de un módulo de simulación óptica capaz de reproducir condiciones controladas de oxigenación tisular mediante la modulación de fuentes lumínicas en diferentes longitudes de onda. La solución busca generar señales ópticas equivalentes a las detectadas por sensores reales, permitiendo así la validación funcional de sistemas de monitoreo y el entrenamiento en entornos académicos. La innovación principal del proyecto radica, en primer lugar, en la implementación de una simulación física y óptica del fenómeno, en lugar de limitarse a una emulación digital de señales y adicionalmente ofrecerle al usuario, en conjunto con el sistema ya existente, la posibilidad de abordar la generación de casos intraoperatorios con un enfoque más realista.
 
-\begin{itemize}
-	\item ¿Cuál es el contexto del proyecto, es un emprendimiento personal, un proyecto para una empresa, es parte del programa de vinculación con empresas del posgrado?
-	\item ¿Existen o aplican condiciones especiales al proyecto, financiamiento de algún programa público o privado, acuerdos de confidencialidad, acuerdos sobre la propiedad intelectual de los entregables u otros?
-	\item ¿Cómo se compara la solución propuesta con el estado del arte en el campo de aplicación? ¿En qué aspectos destaca?
-	\item ¿Ayuda a la explicación si se incluye un lienzo Canvas del Modelo de Negocio?
-	\item ¿En qué estado del ciclo de vida está la solución que se propone?
-	\item ¿Cuáles son las características del cliente (el adoptante de los entregables del proyecto) qué valora, qué necesita?
-	\item ¿Por dónde pasa la innovación?
-\end{itemize}
+Desde lo funcional, el sistema estará compuesto por un microcontrolador encargado de generar las señales de control necesarias para modular la intensidad de múltiples emisores de luz asociados a distintas longitudes de onda. Estas señales serán procesadas mediante una etapa de potencia encargada de regular la corriente sobre los emisores. Finalmente, la radiación emitida atravesará un medio difusor cuyo objetivo es simular la dispersión de la luz en tejido biológico, generando una respuesta óptica equivalente a la observada en un entorno fisiológico real.
 
-La descripción técnica-conceptual \textbf{debe incluir al menos un diagrama en bloques del sistema} y descripción funcional de la solución propuesta.
+En cuanto a la interacción con el usuario, se realizará mediante la interfaz existente del sistema SEDSIM, evitando el desarrollo de una plataforma independiente y facilitando la integración del módulo dentro de la arquitectura ya establecida. De esta manera, el usuario podrá configurar distintos niveles de oxigenación y estados de inconsciencia desde una interfaz unificada.
 
-Las figuras se deben mencionar en el texto ANTES de que aparezcan con una frase como la siguiente: ``En la figura \ref{fig:diagBloques} se presenta el diagrama en bloques del sistema. Se observa que...''.  La regla es que las figuras nunca pueden ir antes de ser mencionadas en el texto, porque sino el lector no entiende por qué de pronto aparece una figura.
+En la figura \ref{fig:diagBloques} se presenta el diagrama en bloques general del sistema propuesto. Se observa que el sistema se divide en una etapa de control basada en microcontrolador, una etapa de potencia para el manejo de los emisores ópticos, un módulo óptico encargado de simular la propagación difusa de la luz y finalmente la interacción con sensores NIRS externos.
+
 
 \begin{figure}[htpb]
 \centering 
-\includegraphics[width=.65\textwidth]{./Figuras/diagBloques.png}
+\includegraphics[width=\textwidth]{./Figuras/diagBloques.png}
 \caption{Diagrama en bloques del sistema.}
 \label{fig:diagBloques}
 \end{figure}
 
 \vspace{25px}
 
-El tamaño del texto en TODAS las figuras debe ser adecuado \textbf{para que NO pase lo que ocurre en la figura \ref{fig:diagBloques}}, donde el lector debe esforzarse para poder leer el texto. 
 
-Los colores usados en el diagrama deben ser adecuados, tal que ayuden a comprender mejor el diagrama. Se recomienda evitar colores primarios (como rojo, verde o cyan) y usar la gama de colores pastel.
-
-\end{consigna} % ELIMINAR \begin{consigna}{red} y \end{consigna}{red} en las secciones que vayan completando para cada entrega parcial.
+%\end{consigna} % ELIMINAR \begin{consigna}{red} y \end{consigna}{red} en las secciones que vayan completando para cada entrega parcial.
 
 \section{2. Identificación y análisis de los interesados}
 \label{sec:interesados}
 
-\begin{consigna}{red} % ELIMINAR \begin{consigna}{red} y \end{consigna}{red} en las secciones que vayan completando para cada entrega parcial.
-\textbf{Nota importante:} borrar esto y todas las consignas en color rojo antes de entregar este documento). Esto se hace eliminando el par de comandos que forman el bloque consigna, \verb!\begin{consigna}{red}! y \verb!\end{consigna}{red}! del código. 
- 
-Es inusual que una misma persona esté en más de un rol, incluso en proyectos chicos. Si se considera que una persona cumple dos o más roles, entonces \textbf{solo dejarla en el rol más importante}. 
+%\begin{consigna}{red} % ELIMINAR \begin{consigna}{red} y \end{consigna}{red} en las secciones que vayan completando para cada entrega parcial.
 
-Por ejemplo, si una persona es Cliente pero también colabora u orienta, dejarla solo como Cliente. Si una persona es el Responsable, \textbf{no debe ser colocado también como miembro del equipo}.
 
 
 \begin{table}[ht]
-%\caption{Identificación de los interesados}
-%\label{tab:interesados}
+\caption{Identificación de los interesados}
+\label{tab:interesados}
 \begin{tabularx}{\linewidth}{@{}|l|X|X|l|@{}}
 \hline
 \rowcolor[HTML]{C0C0C0} 
-Rol           & Nombre y Apellido & Organización 	& Puesto 	\\ \hline
-Auspiciante   &                   &              	&        	\\ \hline
-Cliente       & \clientename      &\empclientename	&        	\\ \hline
-Impulsor      &                   &              	&        	\\ \hline
-Responsable   & \authorname       & FIUBA        	& Alumno 	\\ \hline
-Colaboradores &                   &              	&        	\\ \hline
-Orientador    & \supname	      & \pertesupname 	& Director del Trabajo Final \\ \hline
-Equipo        & miembro1 \newline 
-				miembro2          &              	&        	\\ \hline
-Opositores    &                   &              	&        	\\ \hline
-Usuario final &                   &              	&        	\\ \hline
+Rol           & Nombre y Apellido            & Organización 	& Puesto 	                    \\ \hline
+Auspiciante   & \empclientename              & -            	& -      						\\ \hline
+Cliente       & \empclientename              & - 				& -      						\\ \hline
+Responsable   & \authorname                  & FIUBA        	& Alumno 						\\ \hline
+Orientador    & \supname	                 & \pertesupname 	& Director del Trabajo Final 	\\ \hline
+Equipo        & Ing. Miguel Arias\newline\
+            	Ing. Laura Gómez 			 &\empclientename \newline
+            								  \empclientename    & \begin{minipage}[t]{5cm} Desarrollador \\ 																		Project Manager \end{minipage} \\ \hline
+Usuario final & \begin{flushleft} - Instituciones académicas.\newline 
+				- Centros de entrenamiento clínico.\newline 
+				- Empresas desarrolladoras de tecnología biomédica.          								      				\end{flushleft}   			& -              	& -       						\\ \hline
+				
 \end{tabularx}
 \end{table}
 
-El Director suele ser uno de los orientadores.
-
-No dejar celdas vacías; si no hay nada que poner en una celda colocar un signo ``-''.
-
-No dejar filas vacías; si no hay nada que poner en una fila entonces eliminarla.
-
-Es deseable listar a continuación las principales características de cada interesado.
  
-Por ejemplo:
+
+ 
 \begin{itemize}
-	\item Orientador: la Dra. Ing. María Gómez es experta en la temática y va a ayudar con la definición de los requerimientos y el desarrollo del firmware del embebido.
-	\item Auspiciante: es riguroso y exigente con la rendición de gastos. Tener mucho cuidado con esto.
-	\item Equipo: Juan Perez, suele pedir licencia porque tiene un familiar con una enfermedad. Planificar considerando esto.
+	\item  El \supname\ es experto en diseño de producto, será quien nos orientará en todo lo relacionado con la definición de los requerimientos del equipo, revisión de avances y planificación de rutas de trabajo. con él se pueden organizar reuniones mensuales para revisiones.
+	\item \empclientename\  es la empresa interesada en el desarrollo del proyecto, se deberá controlar el presupuesto asignado.
+	\item El Ing. Miguel Arias es colega en el área de innovación y desarrollo, podrá brindar soporte técnico durante el desarrollo del proyecto. Muchas veces tiene que ausentarse por razones laborales, por tal motivo, planificar siempre reuniones con uno o dos días de anticipación.
+	\item La Ing. Laura Gómez directora de proyectos de la empresa, es un apoyo para cualquier tema en relación a la documentación, calidad y regulaciones. sus horarios son muy variados, por tal motivo, contactar siempre por correo.
+		
 \end{itemize}
 
-\end{consigna} % ELIMINAR \begin{consigna}{red} y \end{consigna}{red} en las secciones que vayan completando para cada entrega parcial.
+%\end{consigna} % ELIMINAR \begin{consigna}{red} y \end{consigna}{red} en las secciones que vayan completando para cada entrega parcial.
 
 
 \section{3. Propósito del proyecto}
 \label{sec:proposito}
 
-\begin{consigna}{red} % ELIMINAR \begin{consigna}{red} y \end{consigna}{red} en las secciones que vayan completando para cada entrega parcial.
+%\begin{consigna}{red} % ELIMINAR \begin{consigna}{red} y \end{consigna}{red} en las secciones que vayan completando para cada entrega parcial.
 
-¿Por qué se hace el proyecto? ¿Qué se quiere lograr? 
+Desarrollar un módulo de simulación óptica NIRS integrado al sistema SEDSIM, capaz de reproducir condiciones controladas de oxigenación tisular mediante la modulación de fuentes luminosas en distintas longitudes de onda. con esto se busca permitir la validación funcional de sensores NIRS comerciales y ampliando las capacidades de simulación de la plataforma existente para aplicaciones académicas, de entrenamiento y de investigación.
 
-Se recomienda que sea solo un párrafo que continúe con la idea de la frase ``el propósito de este proyecto es...'' (omitir la frase, ya que está en el título de la sección).
-\end{consigna}
+%\end{consigna}
 
 \section{4. Alcance del proyecto}
 \label{sec:alcance}
 
-\begin{consigna}{red}
-¿Qué se incluye y que no se incluye en este proyecto?
-
-Se refiere al trabajo que se va a hacer para entregar el producto o resultado especificado. 
-
-Explicitar todo lo quede comprendido dentro del alcance del proyecto. Por ejemplo:
-
+%\begin{consigna}{red}
 El proyecto incluye:
 \begin{itemize}
-	\item Ítem 1.
-	\item Ítem 2.
-		\begin{itemize}
-		\item Subítem 1.
-		\item Subítem 2.
-		\item ...
-		\end{itemize}
-	\item ...
+	\item El diseño e implementación de un módulo de simulación óptica NIRS integrado al sistema SEDSIM.
 	
+	\item El desarrollo del sistema de control basado en microcontrolador para la modulación de señales ópticas, esto incluye el rediseño del firmware existente del sistema para poder establecer la integración del nuevo modulo.
+	
+	
+	\item Diseño y construcción de una matriz de emisores ópticos con distintas longitudes de onda, incluyendo el diseño de la etapa electrónica de potencia para su manejo.
+	
+	\item El desarrollo de un módulo óptico con medio difusor para simular la dispersión de la luz en tejido biológico.
+	
+	\item La integración funcional del módulo con la interfaz física existente del sistema SEDSIM, incluyendo el ajuste y adaptación de la misma para garantizar una integración óptima con la nueva funcionalidad.
+	
+	\item La configuración de parámetros de simulación asociados a distintos niveles de oxigenación tisular.
+	
+	\item La realización de pruebas funcionales y validación básica del comportamiento del sistema mediante sensores comerciales.
+	
+	\item La elaboración de documentación técnica asociada al desarrollo del proyecto.
 \end{itemize}
 
-Explicitar además todo lo que no quede incluido (``El presente proyecto no incluye...'')
+El presente proyecto no incluye:
 
-\end{consigna} % ELIMINAR \begin{consigna}{red} y \end{consigna}{red} en las secciones que vayan completando para cada entrega parcial.
+\begin{itemize}
+	\item El diseño de sensores especiales para el módulo a desarrollar.
+	
+	\item La certificación médica o regulatoria del sistema desarrollado.
+	
+	\item La realización de estudios sobre pacientes o sujetos humanos.
+	
+	\item El desarrollo de algoritmos avanzados de procesamiento de señales.
+	
+	\item El diseño de planes comerciales o estrategias de comercialización del producto final.
+\end{itemize}
+
+Tampoco se contempla el rediseño completo de la interfaz de usuario del sistema SEDSIM, considerándose únicamente las modificaciones y adaptaciones necesarias para permitir la configuración e integración funcional del módulo a desarrollar.
+
+%\end{consigna} % ELIMINAR \begin{consigna}{red} y \end{consigna}{red} en las secciones que vayan completando para cada entrega parcial.
 
 
 \section{5. Supuestos del proyecto}
 \label{sec:supuestos}
 
-\begin{consigna}{red} % ELIMINAR \begin{consigna}{red} y \end{consigna}{red} en las secciones que vayan completando para cada entrega parcial.
-``Para el desarrollo del presente proyecto se supone que: ...''
+%\begin{consigna}{red} % ELIMINAR \begin{consigna}{red} y \end{consigna}{red} en las secciones que vayan completando para cada entrega parcial.
+Para el desarrollo del presente proyecto se supone que:
 
 \begin{itemize}
-	\item Supuesto 1.
-	\item Supuesto 2.
-	\item ...
+	\item Se contará con acceso al sistema SEDSIM y a la documentación técnica necesaria para la integración del módulo desarrollado.
+	
+	\item La empresa Smarttiva Inc. facilitará el completo acceso al código fuente de la plataforma ya existente.
+	
+	\item La empresa Smarttiva Inc. facilitará la disponibilidad de sensores y monitores NIRS para la realización de pruebas.
+	
+	\item Los componentes electrónicos y ópticos necesarios para el desarrollo del prototipo estarán disponibles dentro de los tiempos previstos del proyecto.
+	
+	\item No existirán restricciones regulatorias adicionales para el desarrollo del prototipo, debido a que el sistema tendrá fines académicos y de validación experimental.
+	
+	\item Se dispondrá del tiempo y recursos necesarios para realizar las etapas de diseño, implementación y validación funcional del sistema.
 \end{itemize}
 
-Por ejemplo, se podrían incluir supuestos respecto a disponibilidad de tiempo y recursos humanos y materiales, sobre la factibilidad técnica de distintos aspectos del proyecto, sobre otras cuestiones que sean necesarias para el éxito del proyecto como condiciones macroeconómicas o reglamentarias.
-
-\end{consigna} % ELIMINAR \begin{consigna}{red} y \end{consigna}{red} en las secciones que vayan completando para cada entrega parcial.
+%\end{consigna} % ELIMINAR \begin{consigna}{red} y \end{consigna}{red} en las secciones que vayan completando para cada entrega parcial.
 
 \section{6. Requerimientos}
 \label{sec:requerimientos}
