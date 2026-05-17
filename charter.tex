@@ -60,9 +60,9 @@
 \hline
 \rowcolor[HTML]{C0C0C0} 
 Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios realizados} & Fecha      \\ \hline
-0      & Creación del documento                                 &\fechaInicioName \\ \hline
-1      & Se completa hasta el punto 5 inclusive                & {10} de {mayo} de 2026 \\ \hline
-%2      & Se completa hasta el punto 9 inclusive
+0      & Creación del documento                                 &\fechaInicioName 		\\ \hline
+1      & Se completa hasta el punto 5 inclusive                	& {10} de {mayo} de 2026 \\ \hline
+2      & Se completa hasta el punto 9 inclusive					& {17} de {mayo} de 2026 \\ \hline
 %		  Se puede agregar algo más \newline
 %		  En distintas líneas \newline
 %		  Así                                                    & {día} de {mes} de 202X \\ \hline
@@ -253,110 +253,248 @@ Para el desarrollo del presente proyecto se supone que:
 \section{6. Requerimientos}
 \label{sec:requerimientos}
 
-\begin{consigna}{red} % ELIMINAR \begin{consigna}{red} y \end{consigna}{red} en las secciones que vayan completando para cada entrega parcial.
-Los requerimientos deben enumerarse y de ser posible estar agrupados por afinidad, por ejemplo:
-
+%\begin{consigna}{red} % ELIMINAR \begin{consigna}{red} y \end{consigna}{red} en las secciones que vayan completando para cada entrega parcial.
 \begin{enumerate}
+
 	\item Requerimientos funcionales:
-		\begin{enumerate}
-			\item El sistema debe...
-			\item Tal componente debe...
-			\item El usuario debe poder...
-		\end{enumerate}
+	\begin{enumerate}
+	
+		\item El sistema deberá generar señales ópticas equivalentes a diferentes niveles de oxigenación tisular simulada. [Alta]
+		
+		\item El sistema deberá controlar la intensidad luminosa de múltiples emisores LED en distintas longitudes de onda dentro del rango NIRS. [Alta]
+		
+		\item El sistema deberá permitir la configuración de parámetros de simulación desde la interfaz del sistema SEDSIM. [Alta]
+		
+		\item El sistema deberá integrarse funcionalmente con la plataforma SEDSIM existente. [Alta]
+		
+		\item El sistema deberá incorporar un módulo difusor para simular la dispersión óptica en tejido biológico. [Media]
+		
+		\item El sistema deberá permitir la variación temporal de los niveles simulados de oxigenación. [Media]
+		
+		\item El sistema deberá operar mediante alimentación de baja tensión compatible con sistemas electrónicos de laboratorio. [Media]
+		
+		\item El sistema deberá permitir la interacción con sensores NIRS comerciales para validación funcional. [Alta]
+		
+	\end{enumerate}
+	
+	
+	\item Requerimientos de hardware:
+	\begin{enumerate}
+	
+		\item El sistema deberá utilizar un microcontrolador para la generación y control de señales de modulación. [Alta]
+		
+		\item El sistema deberá incluir una etapa de potencia para el manejo de corriente de los emisores ópticos. [Alta]
+		
+		\item El sistema deberá incorporar emisores ópticos en al menos dos longitudes de onda utilizadas en aplicaciones NIRS. [Alta]
+		
+		\item El prototipo deberá implementarse en un formato físico compatible con el sistema SEDSIM. [Media]
+		
+	\end{enumerate}
+	
+	
+	\item Requerimientos de software e interfaz:
+	\begin{enumerate}
+	
+		\item El usuario deberá poder seleccionar distintos niveles de oxigenación simulada desde la interfaz del sistema. [Alta]
+		
+		\item La interfaz deberá permitir iniciar y detener la simulación óptica. [Media]
+		
+		\item Las modificaciones realizadas sobre la interfaz SEDSIM deberán limitarse exclusivamente a las funcionalidades necesarias para integrar el módulo NIRS. [Media]
+		
+	\end{enumerate}
+	
+	
+	\item Requerimientos de validación y testing:
+	\begin{enumerate}
+	
+		\item El sistema deberá ser sometido a pruebas funcionales de integración hardware-software. [Alta]
+		
+		\item El sistema deberá validar la detección de señales mediante al menos un sensor NIRS comercial. [Alta]
+		
+		\item Se deberá verificar la estabilidad de funcionamiento del sistema durante sesiones continuas de operación. [Alta]
+		
+	\end{enumerate}
+	
+	
 	\item Requerimientos de documentación:
-		\begin{enumerate}
-			\item Requerimiento 1.
-			\item Requerimiento 2 (prioridad menor)
-		\end{enumerate}
-	\item Requerimiento de testing...
-	\item Requerimientos de la interfaz...
-	\item Requerimientos interoperabilidad...
-	\item etc...
+	\begin{enumerate}
+	
+		\item El proyecto deberá incluir documentación técnica del hardware desarrollado. [Media]
+		
+		\item El proyecto deberá incluir documentación básica del software y firmware implementado. [Media]
+		
+		\item El proyecto deberá incluir diagramas funcionales y esquemáticos electrónicos del sistema. [Alta]
+		
+	\end{enumerate}
+	
+	
+	\item Requerimientos normativos y regulatorios:
+	\begin{enumerate}
+		
+		\item El sistema deberá destinarse exclusivamente a aplicaciones académicas, de validación y simulación experimental, no se contempla uso clínico sobre pacientes. [Alta]
+		
+	\end{enumerate}
+
 \end{enumerate}
 
-Leyendo los requerimientos se debe poder interpretar cómo será el proyecto y su funcionalidad.
-
-Indicar claramente cuál es la prioridad entre los distintos requerimientos y si hay requerimientos opcionales. 
-
-\textbf{¡¡¡No olvidarse de que los requerimientos incluyen a las regulaciones y normas vigentes!!!}
-
-Y al escribirlos seguir las siguientes reglas:
-\begin{itemize}
-	\item Ser breve y conciso (nadie lee cosas largas). 
-	\item Ser específico: no dejar lugar a confusiones.
-	\item Expresar los requerimientos en términos que sean cuantificables y medibles.
-\end{itemize}
-
-\end{consigna} % ELIMINAR \begin{consigna}{red} y \end{consigna}{red} en las secciones que vayan completando para cada entrega parcial.
+%\end{consigna} % ELIMINAR \begin{consigna}{red} y \end{consigna}{red} en las secciones que vayan completando para cada entrega parcial.
 
 \section{7. Historias de usuarios (\textit{Product backlog})}
 \label{sec:backlog}
 
-\begin{consigna}{red}
-Descripción: en esta sección se deben incluir las historias de usuarios y su ponderación (\textit{history points}). Recordar que las historias de usuarios son descripciones cortas y simples de una característica contada desde la perspectiva de la persona que desea la nueva capacidad, generalmente un usuario o cliente del sistema. La ponderación es un número entero que representa el tamaño de la historia comparada con otras historias de similar tipo.
+%\begin{consigna}{red}
+Para ponderar las historias de usuarios, se tomarán como escala a los números de Fibonacci y
+se utilizará la siguiente tabla:
 
-Se debe indicar explícitamente el criterio para calcular los \textit{story points} de cada historia.
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
 
-El formato propuesto es: 
+\begin{table}[ht]
+\centering
+\caption{Criterio de ponderación del trabajo necesario para las historias de usuarios}
+\label{tab:interesados}
+
+\begin{tabularx}{\linewidth}{@{}|c|Y|Y|Y|@{}}
+\hline
+
+\rowcolor[HTML]{C0C0C0}
+Nivel & Complejidad & Dificultad & Incertidumbre \\ \hline
+
+Bajo  & 1 & 1  & 1 \\ \hline
+
+Medio & 3 & 5  & 3 \\ \hline
+
+Alto  & 5 & 13 & 8 \\ \hline
+
+\end{tabularx}
+
+\end{table}
+
 \begin{enumerate}
-\item ``Como [rol] quiero [tal cosa] para [tal otra cosa]."
 
-\textit{Story points}: 8 (complejidad: 3, dificultad: 2, incertidumbre: 3)
+\item Como empresa desarrolladora quiero integrar capacidades de simulación NIRS al sistema SEDSIM para ampliar las funcionalidades de la plataforma y aumentar su valor tecnológico.
+\textit{Story points}:  $ \leq 13$  (complejidad: 5, dificultad: 5, incertidumbre: 3)
+
+\vspace{0.3cm}
+
+\item Como operador del sistema quiero configurar distintos niveles de oxigenación simulada para validar sensores NIRS comerciales.
+
+\textit{Story points}: $ \leq 13$  (complejidad: 5, dificultad: 5, incertidumbre: 3)
+
+\vspace{0.3cm}
+
+\item Como usuario del simulador quiero controlar el módulo NIRS desde la interfaz SEDSIM para centralizar la operación del sistema.
+
+\textit{Story points}: $ \leq 13$  (complejidad: 3, dificultad: 5, incertidumbre: 1)
+
+\vspace{0.3cm}
+
+\item Como investigador biomédico quiero variar dinámicamente los niveles de saturación para simular condiciones fisiológicas reales.
+
+\textit{Story points}:  $ \leq 21$  (complejidad: 5, dificultad: 5, incertidumbre: 8)
+
+\item Como desarrollador del sistema quiero implementar una arquitectura modular y escalable que facilite la integración de futuras funcionalidades y actualizaciones del sistema.
+
+\textit{Story points}:  $ \leq 21$  (complejidad: 3, dificultad:5 , incertidumbre: 8)
+
 \end{enumerate}
-\end{consigna}
+%\end{consigna}
 
 \section{8. Entregables principales del proyecto}
 \label{sec:entregables}
 
-\begin{consigna}{red}
-Los entregables del proyecto son (ejemplo):
+%\begin{consigna}{red}
+Los entregables del proyecto son:
 
 \begin{itemize}
-	\item Manual de usuario.
-	\item Diagrama de circuitos esquemáticos.
-	\item Código fuente del firmware.
-	\item Diagrama de instalación.
-	\item Memoria del trabajo final.
-	\item etc...
+
+	\item Prototipo funcional del módulo de simulación óptica NIRS.
+	
+	\item Diseño electrónico del sistema.
+	
+	\item Diagramas esquemáticos de hardware.
+	
+	\item Firmware desarrollado para el control y modulación de las fuentes LED.
+	
+	\item Integración funcional del módulo con la plataforma SEDSIM.
+	
+	\item Adaptaciones sobre la interfaz de usuario del sistema SEDSIM.
+	
+	\item Módulo óptico con medio difusor.
+	
+	\item Código fuente asociado al firmware y software a desarrollar.
+	
+	\item Resultados de pruebas funcionales y validación.
+	
+	\item Documentación técnica del sistema desarrollado.
+	
+	\item Manual básico de operación del prototipo.
+	
+	\item Memoria técnica y documentación final del trabajo de especialización.
+
 \end{itemize}
-\end{consigna}
+%\end{consigna}
 
 \section{9. Desglose del trabajo en tareas}
 \label{sec:wbs}
 
-\begin{consigna}{red}
-El WBS debe tener relación directa o indirecta con los requerimientos.  Son todas las actividades que se harán en el proyecto para dar cumplimiento a los requerimientos. Se recomienda mostrar el WBS mediante una lista indexada:
+%\begin{consigna}{red}
 
 \begin{enumerate}
-\item Grupo de tareas 1 (suma h)
+
+\item Planificación del sistema (55 h)
 	\begin{enumerate}
-	\item Tarea 1 (tantas h)
-	\item Tarea 2 (tantas h)
-	\item Tarea 3 (tantas h)
+	\item Relevamiento de información técnica del sistema SEDSIM (20 h)
+	\item Análisis del funcionamiento de sistemas NIRS comerciales (20 h)
+	\item Definición de requerimientos técnicos del proyecto (15 h)
 	\end{enumerate}
-\item Grupo de tareas 2 (suma h)
+
+\item Diseño del sistema electrónico y óptico (100 h)
 	\begin{enumerate}
-	\item Tarea 1 (tantas h)
-	\item Tarea 2 (tantas h)
-	\item Tarea 3 (tantas h)
+	\item Diseño de arquitectura general del sistema (20 h)
+	\item Selección de componentes electrónicos y ópticos (20 h)
+	\item Diseño de etapa de control (20 h)
+	\item Diseño de etapa de potencia (20 h)
+	\item Diseño conceptual del módulo difusor óptico (20 h)
 	\end{enumerate}
-\item Grupo de tareas 3 (suma h)
+
+\item Desarrollo de firmware y software (120 h)
 	\begin{enumerate}
-	\item Tarea 1 (tantas h)
-	\item Tarea 2 (tantas h)
-	\item Tarea 3 (tantas h)
-	\item Tarea 4 (tantas h)
-	\item Tarea 5 (tantas h)
+	\item Desarrollo de firmware para control de LEDs (40 h)
+	\item Implementación de señales de modulación óptica (30 h)
+	\item Desarrollo de comunicación con SEDSIM (20 h)
+	\item Adaptación de la interfaz gráfica existente (20 h)
+	\item Integración de parámetros de simulación NIRS (10 h)
 	\end{enumerate}
+
+\item Implementación e integración del prototipo (100 h)
+	\begin{enumerate}
+	\item Ensamblaje electrónico del prototipo (30 h)
+	\item Integración de módulos electrónicos y ópticos (30 h)
+	\item Implementación física del sistema difusor (20 h)
+	\item Integración funcional con SEDSIM (20 h)
+	\end{enumerate}
+
+\item Validación y pruebas funcionales (85 h)
+	\begin{enumerate}
+	\item Pruebas de funcionamiento electrónico (20 h)
+	\item Verificación de señales ópticas generadas (25 h)
+	\item Validación con sensores NIRS comerciales (25 h)
+	\item Corrección de errores y ajustes finales (15 h)
+	\end{enumerate}
+
+\item Documentación y presentación final (130 h)
+	\begin{enumerate}
+	\item Redacción del plan de trabajo (10 h)
+	\item Redacción del informe de avance (20 h)
+	\item Redacción de la memoria (80 h)
+	\item Preparación de presentación final y defensa (20 h)
+	\end{enumerate}
+
 \end{enumerate}
 
-Cantidad total de horas: tantas.
+Cantidad total de horas: 590 h. 
 
-\textbf{¡Importante!:} la unidad de horas es h y va separada por espacio del número. Es incorrecto escribir ``23hs".
-
-\textbf{Se recomienda que no haya ninguna tarea que lleve más de 40 h.} De ser así se recomienda dividirla en tareas de menor duración.
-
-\end{consigna}
+%\end{consigna}
 
 \section{10. Diagrama de Activity On Node}
 \label{sec:AoN}
